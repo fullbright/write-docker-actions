@@ -26,4 +26,6 @@ random_fact = select_random_fact(fact_list)
 print(random_fact)
 
 # Set the fact-output of the action as the value of random_fact
-print(f"::set-output name=fact::{random_fact}")
+with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
+    # print(f"::set-output name=fact::{random_fact}")
+    print(f'fact={random_fact}', file=fh)
